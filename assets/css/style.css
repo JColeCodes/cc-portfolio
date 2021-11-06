@@ -1,3 +1,11 @@
+:root {
+    --main-color: #758a96;
+    --second-color: #d3d6c7;
+    --third-color: #5f653d;
+    --lightest-color: #fff;
+    --darkest-color: #191e22;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,5 +13,63 @@
 }
 
 body {
+    background-color: var(--lightest-color);
     font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
+a, button { transition: all 0.5s ease-out; }
+
+/* HEADER */
+header {
+    min-height: 600px;
+    background-color: var(--main-color);
+    background-image: url("../images/header.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    text-shadow: 1px 1px 1px var(--darkest-color);
+    text-align: center;
+}
+.title {
+    width: 100%;
+    margin: 50px auto 150px;
+    order: 2;
+}
+.title h1 {
+    color: var(--lightest-color);
+    font-family: 'Hammersmith One', sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 5.4vw;
+    margin: 0 auto;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+.title h1 a, .title h1 a:hover {
+    color: var(--lightest-color);
+    text-decoration: none;
+}
+.title h2 {
+    color: var(--lightest-color);
+    font-family: 'IM Fell Double Pica', serif;
+    text-transform: lowercase;
+    font-weight: normal;
+    font-size: 2.4vw;
+    line-height: 1;
+}
+nav {
+    width: 100%;
+    margin: 50px auto;
+    text-transform: uppercase;
+}
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+    padding: 5px 10px;
+    font-family: 'Hammersmith One', sans-serif;
+    font-size: 20px;
+}
+nav ul li a {
+    color: var(--lightest-color);
+    text-decoration: none;
 }
