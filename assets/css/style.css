@@ -18,7 +18,20 @@ body {
     font-family: 'Lato', Helvetica, Arial, sans-serif;
     font-size: 16px;
 }
-a, button { transition: all 0.5s ease-out; }
+a, button, .portfolio-box, .design-box { transition: all 0.5s ease-out; }
+a { text-decoration: none; }
+
+/* H TAGS */
+h1, h4, h5 {
+    font-family: 'Hammersmith One', sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+    line-height: 1;
+}
+h2, h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: normal;
+}
 
 /* HEADER */
 header {
@@ -38,13 +51,9 @@ header {
 }
 .title h1 {
     color: var(--lightest-color);
-    font-family: 'Hammersmith One', sans-serif;
-    text-transform: uppercase;
-    font-weight: normal;
     font-size: 5.4vw;
     margin: 0 auto;
     letter-spacing: -2px;
-    line-height: 1;
 }
 .title h1 a, .title h1 a:hover {
     color: var(--lightest-color);
@@ -52,9 +61,7 @@ header {
 }
 .title h2 {
     color: var(--lightest-color);
-    font-family: 'Libre Baskerville', serif;
     text-transform: lowercase;
-    font-weight: normal;
     font-size: 2vw;
     line-height: 1;
 }
@@ -88,9 +95,7 @@ section:not(:last-child) {
     border-bottom: 1px solid var(--second-color);
 }
 section h3 {
-    font-family: 'Libre Baskerville', serif;
     font-size: 32px;
-    font-weight: normal;
     color: var(--main-darker);
     margin: 10px;
     width: 100%;
@@ -98,12 +103,6 @@ section h3 {
 
 /* ABOUT ME */
 .about-me { padding: 0 20px; }
-.about-me h4 {
-    font-family: 'Hammersmith One', sans-serif;
-    text-transform: uppercase;
-    font-weight: normal;
-    line-height: 1;
-}
 .main-content {
     order: 2;
     width: 980px; max-width: calc(80% - 20px);
@@ -166,6 +165,7 @@ section h3 {
     line-height: 1;
 }
 
+/* ABOUT SIDE INFO */
 .quick-info {
     width: 220px; max-width: 20%;
     text-align: center;
@@ -203,7 +203,117 @@ p.about-text::before {
     margin: 20px 0;
 }
 
-/* SECTIONS */
+/* PORTFOLIO */
+.portfolio-boxes, .design-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.portfolio-boxes a {
+    color: var(--lightest-color);
+    text-decoration: none;
+}
+
+.portfolio-box, .design-box {
+    text-overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.85;
+    outline: 1px solid var(--lightest-color);
+    outline-offset: -6px;
+    margin: 5px;
+}
+.portfolio-box:hover, .design-box:hover {
+    opacity: 1;
+}
+
+.initial-box {
+    width: calc(100% - 10px);
+    margin: 0 auto;
+    background-position: top;
+}
+.sub-box {
+    width: calc(33.33% - 10px);
+}
+
+.portfolio-text {
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+    background: linear-gradient(rgba(117,138,150,0), rgba(117,138,150,0), rgba(117,138,150,1));
+    padding: 200px 15px 15px;
+    margin: 0;
+}
+.portfolio-text h4, .design-box h5 {
+    background-color: var(--main-darker);
+    display: inline;
+    padding: 5px 8px 3px;
+    font-size: 20px;
+}
+.design-box h5 {
+    font-size: 16px;
+    color: var(--lightest-color);
+}
+.portfolio-text p, .design-box p {
+    display: block;
+    margin: 8px 0 0;
+    font-family: 'Libre Baskerville', serif;
+}
+.design-box p {
+    font-size: 14px;
+    color: var(--lightest-color);
+}
+
+.design-boxes h4 {
+    width: 100%;
+    margin: 20px 5px 5px;
+    font-size: 24px;
+}
+.design-boxes h4:first-of-type { margin-top: 0; }
+.design-box {
+    margin: 5px;
+    width: calc(25% - 10px);
+}
+.design-box .portfolio-text { padding: 130px 15px 15px; }
+
+/* CSS-ONLY LIGHTBOX */
+.design-box:hover {
+    cursor: pointer;
+}
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9000;
+    top: 0; right: 0; bottom: 0; left: 0;
+    padding: 60px;
+    background-color: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+}
+.lightbox:target {
+    display: flex;
+}
+.lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 40px);
+    height: auto;
+    border: 20px solid var(--lightest-color);
+    background-color: var(--lightest-color);
+}
+.lightbox::after {
+    content: "X";
+    display: block;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    line-height: 1;
+    color: var(--lightest-color);
+    font-size: 30px;
+    text-shadow: 0 0 2px #000;
+}
 
 /* FOOTER */
 footer {
