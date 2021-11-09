@@ -18,8 +18,9 @@ body {
     font-family: 'Lato', Helvetica, Arial, sans-serif;
     font-size: 16px;
 }
-a, button, .portfolio-box, .design-box { transition: all 0.5s ease-out; }
-a { text-decoration: none; }
+a, button, .portfolio-box, .design-box, .lightbox:after, img { transition: all 0.5s ease-out; }
+a { text-decoration: none; color: var(--main-color); }
+a:hover { color: var(--third-color); }
 
 /* H TAGS */
 h1, h4, h5 {
@@ -57,7 +58,6 @@ header {
 }
 .title h1 a, .title h1 a:hover {
     color: var(--lightest-color);
-    text-decoration: none;
 }
 .title h2 {
     color: var(--lightest-color);
@@ -73,13 +73,16 @@ nav {
 nav ul li {
     display: inline-block;
     margin: 10px;
-    padding: 5px 10px;
     font-family: 'Hammersmith One', sans-serif;
     font-size: 20px;
 }
 nav ul li a {
+    padding: 5px 10px 3px;
     color: var(--lightest-color);
-    text-decoration: none;
+}
+nav ul li a:hover {
+    color: var(--lightest-color);
+    background-color: var(--main-color);
 }
 
 /* SECTIONS */
@@ -121,48 +124,76 @@ section h3 {
 .skill-box {
     transition: all 0.7s ease-out;
     padding: 10px;
-    margin: 10px;
-    width: calc(25% - 20px);
+    margin: 5px;
+    width: calc(20% - 10px);
     position: relative;
-    min-height: 120px;
-    background-color: var(--second-color);
-    color: var(--third-color);
+    min-height: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Hammersmith One', sans-serif;
     text-transform: uppercase;
     font-size: 24px;
+    line-height: 1;
 }
+.skill-box:hover { font-size: 0; }
+
+.color-one {
+    background-color: var(--second-color);
+    color: var(--third-color);
+}
+.color-one:hover { color: var(--second-color); }
+.color-one ul {
+    color: var(--third-color);
+    /*background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.6));*/
+}
+.color-two {
+    background-color: var(--main-color);
+    color: var(--lightest-color);
+}
+.color-two:hover { color: var(--main-color); }
+.color-two ul, .color-three ul {
+    color: var(--lightest-color);
+    /*background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3));*/
+}
+.color-three {
+    background-color: var(--third-color);
+    color: var(--lightest-color);
+}
+.color-three:hover { color: var(--third-color); }
+
 .skill-box ul {
     transition: all 0.7s ease-out;
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap; 
-    opacity: 1;
-    top: 100%;
+    flex-wrap: wrap;
     margin: 0 -10px;
-    padding: 0;
     width: 100%;
+    opacity: 1;
+    /*top: 100%;
+    padding: 0;
     min-height: 0;
+    line-height: 0;*/
+    top: 0;
+    padding: 15px;
+    min-height: 130px;
+    line-height: 1;
     overflow: hidden;
-    line-height: 0;
     font-size: 16px;
-    background: linear-gradient(rgba(117,138,150,0), var(--main-color));
-    color: var(--darkest-color);
     font-family: 'Libre Baskerville', serif;
     text-transform: none;
+    transform: scale(0);
 }
 .skill-box ul li { flex: 100%; }
-.skill-box:hover { color: var(--second-color); }
 .skill-box:hover ul {
     opacity: 1;
-    top: 0;
-    padding: 10px;
-    min-height: 120px;
-    line-height: 1;
+    /*top: 0;
+    padding: 15px;
+    min-height: 130px;
+    line-height: 1;*/
+    transform: scale(1);
 }
 
 /* ABOUT SIDE INFO */
@@ -227,6 +258,7 @@ p.about-text::before {
 }
 .portfolio-box:hover, .design-box:hover {
     opacity: 1;
+    transform: scale(1.03);
 }
 
 .initial-box {
@@ -277,43 +309,43 @@ p.about-text::before {
 .design-box .portfolio-text { padding: 130px 15px 15px; }
 
 /* CSS-ONLY LIGHTBOX */
-.design-box:hover {
-    cursor: pointer;
-}
 .lightbox {
-    display: none;
     position: fixed;
-    z-index: 9000;
+    z-index: -1;
     top: 0; right: 0; bottom: 0; left: 0;
     padding: 60px;
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0,0,0,0);
     align-items: center;
     justify-content: center;
+    display: flex;
 }
 .lightbox:target {
-    display: flex;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 9000;
 }
 .lightbox img {
     display: block;
-    max-width: 100%;
+    transform: scale(0);
+    max-width: calc(100vh - 40px);
     max-height: calc(100vh - 40px);
-    height: auto;
     border: 20px solid var(--lightest-color);
     background-color: var(--lightest-color);
 }
+.lightbox:target img { transform: scale(1); }
 .lightbox::after {
     content: "X";
     display: block;
     position: fixed;
     z-index: 9999;
     top: 0;
-    right: 0;
+    right: -80px;
     padding: 20px;
     line-height: 1;
     color: var(--lightest-color);
     font-size: 30px;
     text-shadow: 0 0 2px #000;
 }
+.lightbox:target::after { right: 0; }
 
 /* FOOTER */
 footer {
