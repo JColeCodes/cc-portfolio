@@ -4,7 +4,7 @@ Given that the assignment focused around CSS, instead of using Javascript on the
 The site title "Cole Codes" refers to my current portfolio website, [ColeCodes.com](https://colecodes.com/), on which I plan to implement a Wordpress theme version of this portfolio design in the future.
 
 # View Live Page
-[View the live CSS portfolio page on GitHub.](https://jcolecodes.github.io/portfolio-challenge-02/)
+[View the live CSS portfolio page on GitHub.](https://jcolecodes.github.io/cc-portfolio/)
 
 # Screenshot
 ![Screenshot of the portfolio page as seen with 1280px width](./screenshot.jpg)
